@@ -58,19 +58,31 @@ exports.main = async (event, callback) => {
   if (allProjectsExceptTheCurrent.length > 0) {
     // get latest project number
     const latestProject = allProjectsExceptTheCurrent.reduce((a, b) => a.properties.createdAt > b.properties.createdAt ? a : b);
+    var latestProjectId = latestProject.id
     var latestProjectNumber = latestProject.properties.no_de_projet
     
+    if (latestProjectNumber) {
+      console.log(`Latest project number = ${latestProjectNumber} and ID = ` + latestProjectId)
 
-    console.log(`Latest project number = ${latestProjectNumber} and ID = ` + latestProject.id)
+      const projectNumber = parseInt(latestProjectNumber) + 1;
+      console.log(`New project number = ` + projectNumber);
 
-    const projectNumber = parseInt(latestProjectNumber) + 1;
-    console.log(`New project number = ` + projectNumber);
-
-    callback({
-    outputFields: {
-        projectNumber: projectNumber
+      callback({
+        outputFields: {
+          latestProjectId: latestProjectId,
+          projectNumber: projectNumber,
+          nextAction: "setProjectNumber"
+        }
+      });
+    } else {
+      callback({
+        outputFields: {
+          latestProjectId: latestProjectId,
+          projectNumber: "NaN",
+          nextAction: "retry"
+        }
+      });
     }
-    });
 
   } else {
     console.error("No projects found");
