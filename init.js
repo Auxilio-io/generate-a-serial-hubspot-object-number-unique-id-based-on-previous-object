@@ -12,6 +12,7 @@ exports.main = async (event, callback) => {
   const archived = false;
   var hasMore = true;
   const projectId = event.inputFields['hs_object_id'];
+  const createdate = event.inputFields['hs_createdate'];
 
   //define reusable function
   
@@ -57,7 +58,21 @@ exports.main = async (event, callback) => {
   
   if (allProjectsExceptTheCurrent.length > 0) {
     // get latest project number
-    const latestProject = allProjectsExceptTheCurrent.reduce((a, b) => a.properties.createdAt > b.properties.createdAt ? a : b);
+	const latestProject = allProjectsExceptTheCurrent.reduce((latest, current) => {
+		const currentCreateDate = Date.parse(current.properties.hs_createdate);
+		const latestCreateDate = parseInt(createdate);
+		
+		// Check if the project was created before the specified createdate
+		if (currentCreateDate < latestCreateDate) {
+			// Update the latest project if it's empty or if the current project was created more recently
+			if (!latest || currentCreateDate > Date.parse(latest.properties.hs_createdate)) {
+			latest = current;
+			}
+		}
+		
+		return latest;
+		}, null);
+	  
     var latestProjectId = latestProject.id
     var latestProjectNumber = latestProject.properties.no_de_projet
     
@@ -88,5 +103,3 @@ exports.main = async (event, callback) => {
     console.error("No projects found");
   }
 }
-
- 
