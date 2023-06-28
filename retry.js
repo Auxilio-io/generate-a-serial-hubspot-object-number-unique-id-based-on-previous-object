@@ -3,9 +3,9 @@ const hubspot = require('@hubspot/api-client');
 exports.main = async (event, callback) => {
   
   //define variables
-  const opsToken = process.env.OPS_TOKEN
-  const objectType = "2-13510438";
-  const properties = ["no_de_projet"];
+  const opsToken = process.env.SERIAL_RECORD_ID_GENERATOR
+  const objectType = "2-13510438"; // this the type id of the custom object project used in this example. Could be replaced with any standard object (contacts, deals, companies, tickets) or another custom object type id 2-XXXXX
+  const properties = ["serial_number_id"];
   const latestProjectId = event.inputFields['latestProjectId'];
   const objectId = latestProjectId
 
@@ -26,7 +26,7 @@ exports.main = async (event, callback) => {
 
   getProject()
     .then(latestProject => {
-	const latestProjectNumber = latestProject.properties.no_de_projet
+	const latestProjectNumber = latestProject.properties.serial_number_id
     
     if (latestProjectNumber) {
       console.log(`Latest project number = ${latestProjectNumber} and ID = ` + latestProjectId)
