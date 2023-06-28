@@ -28,7 +28,10 @@ This coded files are intented to be used in a hubspot contact workflow within cu
 17. Select outputs: {projectNumber: number, nextAction: enumeration {options:"setProjectNumber", "retry"}}
 18. Save your 2nd custom coded action
 19. You can repeat the retry process as much as needed
-24. Set your workflow to "on"
+## End of the optional steps
+20. Set your workflow to "on"
+21. Create a first record and set the serial_number_id property with the value you want to start with. It can be 1, or you can start with any number (e.g. 1001)
+22. If you already have a lot of records on the object you can set serial_number_id property in bulk by exporting your records, populate the serial_number_id column in Excel, Google Sheets, Numbers, etc. and re-import the records in HubSpot with the 'Update existing records' option enabled.
 
 
 ## How the workflow should look:
