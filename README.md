@@ -20,10 +20,10 @@ This coded files are intented to be used in a hubspot contact workflow within cu
 13. Add a value equals branch action next to your custom coded action in the workflow. Branch on the nextAction options of your first custom coded action.
 14. In the "setProjectNumber" branch, copy projectNumber to serial_number_id
 ### OPTIONAL - If for some reason you have a long processing time and some of your record doesn't get a serial number generated you can add the following
-14.1 In the "retry" branch, add a delay action of 5 minutes (could be less or more as needed)
-14.2 Next to the delay action, add a 2nd custom coded action to the workflow
-14.3 Select SERIAL_RECORD_ID_GENERATOR secret in your custom coded action
-14.4 Select latestProjectId as an input in your custom coded action
+14.1. In the "retry" branch, add a delay action of 5 minutes (could be less or more as needed)
+14.2. Next to the delay action, add a 2nd custom coded action to the workflow
+14.3. Select SERIAL_RECORD_ID_GENERATOR secret in your custom coded action
+14.4. Select latestProjectId as an input in your custom coded action
 14.5 Copy/paste the content of the retry.js file in the code editor of your custom coded action
 14.6 Select outputs: {projectNumber: number, nextAction: enumeration {options:"setProjectNumber", "retry"}}
 14.7 Save your 2nd custom coded action
