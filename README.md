@@ -19,19 +19,19 @@ This coded files are intented to be used in a hubspot contact workflow within cu
 12. Save your custom coded action
 13. Add a value equals branch action next to your custom coded action in the workflow. Branch on the nextAction options of your first custom coded action.
 14. In the "setProjectNumber" branch, copy projectNumber to serial_number_id
-## OPTIONAL - If for some reason you have a long processing time and some of your record doesn't get a serial number generated you can add the following
-13. In the "retry" branch, add a delay action of 5 minutes (could be less or more as needed)
-14. Next to the delay action, add a 2nd custom coded action to the workflow
-15. Select SERIAL_RECORD_ID_GENERATOR secret in your custom coded action
-16. Select latestProjectId as an input in your custom coded action
-17. Copy/paste the content of the retry.js file in the code editor of your custom coded action
-17. Select outputs: {projectNumber: number, nextAction: enumeration {options:"setProjectNumber", "retry"}}
-18. Save your 2nd custom coded action
-19. You can repeat the retry process as much as needed
-## End of the optional steps
-20. Set your workflow to "on"
-21. Create a first record and set the serial_number_id property with the value you want to start with. It can be 1, or you can start with any number (e.g. 1001)
-22. If you already have a lot of records on the object you can set serial_number_id property in bulk by exporting your records, populate the serial_number_id column in Excel, Google Sheets, Numbers, etc. and re-import the records in HubSpot with the 'Update existing records' option enabled.
+### OPTIONAL - If for some reason you have a long processing time and some of your record doesn't get a serial number generated you can add the following
+14.1 In the "retry" branch, add a delay action of 5 minutes (could be less or more as needed)
+14.2 Next to the delay action, add a 2nd custom coded action to the workflow
+14.3 Select SERIAL_RECORD_ID_GENERATOR secret in your custom coded action
+14.4 Select latestProjectId as an input in your custom coded action
+14.5 Copy/paste the content of the retry.js file in the code editor of your custom coded action
+14.6 Select outputs: {projectNumber: number, nextAction: enumeration {options:"setProjectNumber", "retry"}}
+14.7 Save your 2nd custom coded action
+14.8 You can repeat the retry process as much as needed
+### End of the optional steps
+15. Set your workflow to "on"
+16. Create a first record and set the serial_number_id property with the value you want to start with. It can be 1, or you can start with any number (e.g. 1001)
+17. If you already have a lot of records on the object you can set serial_number_id property in bulk by exporting your records, populate the serial_number_id column in Excel, Google Sheets, Numbers, etc. and re-import the records in HubSpot with the 'Update existing records' option enabled.
 
 
 ## How the workflow should look:
