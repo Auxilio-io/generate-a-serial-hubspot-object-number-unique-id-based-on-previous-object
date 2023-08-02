@@ -1,4 +1,4 @@
-# generate-a-serial-hubspot-object-number-unique-id-based-on-previous-object
+# Generate a serial HubSpot object record number unique id property
 
 ## What is it?
 This coded files are intented to be used in a hubspot contact workflow within custom coded actions. Object Ids in HubSpot are randomly generated. These custom coded actions lets you generate an incremented (or serial or sequential) number id (i.e. first object created get id 1, second gets 2, etc.). The example used in th code in this repo is for a custom object named "Project" but this could be uses on any object (Contacts, companies, deals, tickets, custom objects)
