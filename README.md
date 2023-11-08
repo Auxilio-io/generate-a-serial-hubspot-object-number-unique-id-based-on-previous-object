@@ -37,3 +37,5 @@ _ You can repeat the retry process as much as needed
 ## How the workflow should look:
 ![HubSpot Workflow to generate a serial number id](/hubspot-worklfows-custom-coded-actions-to-generate-a-serial-number-id.png)
 
+## Get help from the community
+https://community.hubspot.com/t5/CRM/Creating-custom-object-with-unique-ID/m-p/876303
